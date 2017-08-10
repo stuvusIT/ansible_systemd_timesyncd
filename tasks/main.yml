@@ -4,7 +4,7 @@
     state: link
     src: /usr/share/zoneinfo/{{ timesync_timezone }}
     dest: /etc/localtime
-  notify: Restart systemd-timesyncd
+  notify: systemd-timesyncd configuration changed
 
 - name: Configure systemd-timesyncd
   template:
@@ -13,7 +13,7 @@
     mode: 0644
     owner: root
     group: root
-  notify: Restart systemd-timesyncd
+  notify: systemd-timesyncd configuration changed
 
 - name: Start and enable systemd-timesyncd
   service:
