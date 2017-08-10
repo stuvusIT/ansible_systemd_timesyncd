@@ -1,0 +1,22 @@
+---
+- name: Set timezone
+  file:
+    state: link
+    src: /usr/share/zoneinfo/{{ timesync_timezone }}
+    dest: /etc/localtime
+  notify: Restart systemd-timesyncd
+
+- name: Configure systemd-timesyncd
+  template:
+    src: timesyncd.conf.j2
+    dest: /etc/systemd/timesyncd.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify: Restart systemd-timesyncd
+
+- name: Start and enable systemd-timesyncd
+  service:
+    name: systemd-timesyncd.service
+    enabled: yes
+    state: started

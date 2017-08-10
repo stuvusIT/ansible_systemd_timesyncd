@@ -1,0 +1,31 @@
+galaxy_info:
+  author: Janne Heß
+  description: Set timezone and configure systemd-timesyncd
+  company: stuvus (http://stuvus.uni-stuttgart.de)
+
+  license: CC-BY-SA
+
+  min_ansible_version: 2.0
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+    - yakkety
+  - name: Debian
+    versions:
+    - jessie
+  - name: ArchLinux
+    versions:
+    - all
+    - any
+
+  galaxy_tags:
+    - systemd
+    - ntp
+    - systemd-timesyncd
+    - timesync
+    - time
+    - timedatectl
+
+dependencies: []
