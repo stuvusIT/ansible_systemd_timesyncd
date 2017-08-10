@@ -1,0 +1,6 @@
+# vi: ft=dosini:
+# {{ ansible_managed }}
+
+[Time]
+NTP={{ timesync_ntp_hosts | default("") | join(" ") }}
+FallbackNTP={{ timesync_fallback_ntp_hosts | join(" ") }}
