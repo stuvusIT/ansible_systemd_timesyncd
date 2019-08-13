@@ -1,10 +1,7 @@
 ---
 - name: Set timezone
-  file:
-    state: link
-    src: /usr/share/zoneinfo/{{ timesync_timezone }}
-    dest: /etc/localtime
-    force: yes
+  timezone:
+    name: {{ timesync_timezone }}
   notify: systemd-timesyncd configuration changed
 
 - name: Configure systemd-timesyncd
