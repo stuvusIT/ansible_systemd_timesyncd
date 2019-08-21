@@ -1,7 +1,7 @@
 ---
 - name: Set timezone
   timezone:
-    name: {{ timesync_timezone }}
+    name: "{{ timesync_timezone }}"
   notify: systemd-timesyncd configuration changed
 
 - name: Configure systemd-timesyncd
