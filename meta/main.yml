@@ -20,6 +20,12 @@ galaxy_info:
     versions:
     - all
     - any
+  - name: EL
+    versions:
+    - 7
+  - name: Fedora
+    versions:
+    - 30
 
   galaxy_tags:
     - systemd
