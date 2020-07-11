@@ -18,3 +18,30 @@
     name: systemd-timesyncd.service
     enabled: yes
     state: started
+
+- name: Flush handlers for restart prior to RTC update
+  meta: flush_handlers
+
+- name: Check if RTC exists
+  stat:
+    path: "{{timesync_rtc_dev}}"
+  register: rtc_dev
+  when: timesync_rtc_set == "auto"
+
+- name: "Evaluate RTC auto update"
+  set_fact:
+    timesync_rtc_set: true
+  when: timesync_rtc_set == "auto" and rtc_dev.stat.exists and rtc.dev.stat.writeable and (ansible_virtualization_role == "host" or ansible_virtualization_role == "NA")
+
+- name: Wait for time to synchronize
+  shell: "timedatectl | grep 'NTP synchronized' | cut -d' ' -f3"
+  register: synchronized
+  retries: 5
+  delay: 5
+  until: synchronized.stdout == "yes"
+  when: timesync_rtc_set == true
+
+- name: Write adjtime
+  command: "hwclock --systohc --rtc={{timesync_rtc_dev}}"
+  when: timesync_rtc_set == true
+

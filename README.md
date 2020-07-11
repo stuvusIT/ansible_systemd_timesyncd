@@ -8,11 +8,13 @@ systemd with timesyncd compiled in
 
 ## Role Variables
 
-| Name                          | Default/Required      | Description                                         |
-|-------------------------------|:---------------------:|-----------------------------------------------------|
-| `timesync_timezone`           | `Etc/UTC`             | Timezone to set (relative to `/usr/share/zoneinfo`) |
-| `timesync_ntp_hosts`          |                       | Array of NTP hosts                                  |
-| `timesync_fallback_ntp_hosts` | `{0..3}.pool.ntp.org` | Array of fallback NTP hosts                         |
+| Name                          | Default/Required      | Description                                                                      |
+|-------------------------------|:---------------------:|----------------------------------------------------------------------------------|
+| `timesync_timezone`           | `Etc/UTC`             | Timezone to set (relative to `/usr/share/zoneinfo`)                              |
+| `timesync_ntp_hosts`          |                       | Array of NTP hosts                                                               |
+| `timesync_fallback_ntp_hosts` | `{0..3}.pool.ntp.org` | Array of fallback NTP hosts                                                      |
+| `timesync_rtc_set`            | `auto`                | Determines if the RTC will be updated. `auto` will only update if the RTC exists |
+| `timesync_rtc_dev`            | `/dev/rtc`            | The RTC device to be used                                                        |
 
 ## Dependencies
 

@@ -5,3 +5,5 @@ timesync_fallback_ntp_hosts:
   - 1.pool.ntp.org
   - 2.pool.ntp.org
   - 3.pool.ntp.org
+timesync_rtc_set: auto
+timesync_rtc_dev: /dev/rtc
