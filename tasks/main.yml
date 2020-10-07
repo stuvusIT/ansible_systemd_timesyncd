@@ -18,3 +18,9 @@
     name: systemd-timesyncd.service
     enabled: yes
     state: started
+  
+- name: Disable NTP service
+  service:
+    name: ntp
+    enabled: no
+    state: stopped
