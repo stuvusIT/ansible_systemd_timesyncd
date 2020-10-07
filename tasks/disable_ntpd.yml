@@ -1,0 +1,5 @@
+- name: Disable NTP service
+  service:
+    name: ntp
+    enabled: no
+    state: stopped
