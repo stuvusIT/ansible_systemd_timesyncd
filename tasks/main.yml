@@ -19,8 +19,14 @@
     enabled: yes
     state: started
   
+- name: Check if NTP Service Exists
+  stat: 
+    path: /etc/init.d/ntp
+  register: ntp_status
+  
 - name: Disable NTP service
   service:
     name: ntp
     enabled: no
     state: stopped
+  when: ntp_status.stat.exists
