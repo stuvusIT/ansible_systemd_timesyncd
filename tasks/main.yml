@@ -18,6 +18,7 @@
     name: systemd-timesyncd.service
     enabled: yes
     state: started
+    masked: no
   
 - name: Check if NTP Service Exists
   stat: 
