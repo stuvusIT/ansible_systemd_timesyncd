@@ -7,5 +7,5 @@
 
 - name: Write adjtime
   command: hwclock --systohc
-  when: ansible_virtualization_role == "host" or ansible_virtualization_role == "NA"
+  when: (ansible_virtualization_role == "host" or ansible_virtualization_role == "NA") and timesync_write_hwclock_on_change
   listen: systemd-timesyncd configuration changed
