@@ -8,11 +8,12 @@ systemd with timesyncd compiled in
 
 ## Role Variables
 
-| Name                          | Default/Required      | Description                                         |
-|-------------------------------|:---------------------:|-----------------------------------------------------|
-| `timesync_timezone`           | `Etc/UTC`             | Timezone to set (relative to `/usr/share/zoneinfo`) |
-| `timesync_ntp_hosts`          |                       | Array of NTP hosts                                  |
-| `timesync_fallback_ntp_hosts` | `{0..3}.pool.ntp.org` | Array of fallback NTP hosts                         |
+| Name                               |   Default/Required    | Description                                                                       |
+| ---------------------------------- | :-------------------: | --------------------------------------------------------------------------------- |
+| `timesync_timezone`                |       `Etc/UTC`       | Timezone to set (relative to `/usr/share/zoneinfo`)                               |
+| `timesync_ntp_hosts`               |                       | Array of NTP hosts                                                                |
+| `timesync_fallback_ntp_hosts`      | `{0..3}.pool.ntp.org` | Array of fallback NTP hosts                                                       |
+| `timesync_write_hwclock_on_change` |        `True`         | Whether to write the time to the hardware clock after changing the configuration. |
 
 ## Dependencies
 
