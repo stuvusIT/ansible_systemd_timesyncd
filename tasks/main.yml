@@ -1,4 +1,15 @@
 ---
+- name: Check if systemd-timesyncd can be installed
+  shell: aptitude -q search 'systemd-timesyncd'
+  register: installable
+  failed_when: installable.rc != 0 and installable.rc != 1
+  changed_when: False
+
+- name: Install systemd-timesyncd
+  apt:
+    name: systemd-timesyncd
+  when: installable.rc == 0
+
 - name: Set timezone
   timezone:
     name: "{{ timesync_timezone }}"
