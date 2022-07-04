@@ -1,4 +1,8 @@
 ---
+- name: Install systemd-timesyncd
+  package:
+    name: systemd-timesyncd
+
 - name: Set timezone
   timezone:
     name: "{{ timesync_timezone }}"
