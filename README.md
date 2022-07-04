@@ -4,7 +4,7 @@ This role sets the timezone and configures and enables systemd-timesyncd.
 
 ## Requirements
 
-debian
+systemd with timesyncd compiled in
 
 ## Role Variables
 
