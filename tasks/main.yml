@@ -1,10 +1,8 @@
 ---
-- set_fact:
-    pkg_name: "{{ 'systemd' if (ansible_distribution == 'Debian' and ansible_distribution_major_version is version('10', '<=')) else 'systemd-timesyncd' }}"
-
 - name: Install systemd-timesyncd
   package:
-    name: "{{ pkg_name }}"
+    name: systemd-timesyncd
+  when: not ((ansible_distribution == 'Debian' and ansible_distribution_major_version is version('11', '<')) or (ansible_distribution == 'Ubuntu' and ansible_distribution_major_version is version('20', '<')))
 
 - name: Set timezone
   timezone:
