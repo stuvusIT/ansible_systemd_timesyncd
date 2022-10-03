@@ -1,14 +1,8 @@
 ---
-- name: Check if systemd-timesyncd can be installed
-  shell: aptitude -q search 'systemd-timesyncd'
-  register: installable
-  failed_when: installable.rc != 0 and installable.rc != 1
-  changed_when: False
-
 - name: Install systemd-timesyncd
-  apt:
+  package:
     name: systemd-timesyncd
-  when: installable.rc == 0
+  when: not ((ansible_distribution == 'Debian' and ansible_distribution_major_version is version('11', '<')) or (ansible_distribution == 'Ubuntu' and ansible_distribution_major_version is version('20', '<')))
 
 - name: Set timezone
   timezone:
