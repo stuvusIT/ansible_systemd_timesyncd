@@ -2,7 +2,7 @@
 - name: Install systemd-timesyncd
   package:
     name: systemd-timesyncd
-  when: not ((ansible_distribution == 'Debian' and ansible_distribution_major_version is version('11', '<')) or (ansible_distribution == 'Ubuntu' and ansible_distribution_major_version is version('20', '<')))
+  when: not ((ansible_distribution == 'Debian' and ansible_distribution_major_version is version('11', '<')) or (ansible_distribution == 'Ubuntu' and ansible_distribution_major_version is version('20', '<')) or ansible_distribution == 'Archlinux')
 
 - name: Set timezone
   timezone:
