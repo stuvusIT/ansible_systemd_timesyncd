@@ -9,10 +9,18 @@
     name: "{{ timesync_timezone }}"
   notify: systemd-timesyncd configuration changed
 
+- name: Create systemd-timesyncd.conf.d
+  file:
+    path: /etc/systemd/timesyncd.conf.d
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
 - name: Configure systemd-timesyncd
   template:
     src: timesyncd.conf.j2
-    dest: /etc/systemd/timesyncd.conf
+    dest: /etc/systemd/timesyncd.conf.d/local.conf
     mode: 0644
     owner: root
     group: root
