@@ -20,7 +20,7 @@
 - name: Configure systemd-timesyncd
   template:
     src: timesyncd.conf.j2
-    dest: /etc/systemd/timesyncd.conf.d/local.conf
+    dest: /etc/systemd/timesyncd.conf
     mode: 0644
     owner: root
     group: root
