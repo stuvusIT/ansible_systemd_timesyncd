@@ -1,4 +1,11 @@
 ---
+- name: Ensure hwclock is installed
+  package:
+    name:
+      - util-linux-extra # hwclock is not installed by default in Ubuntu 24.04LTS
+    state: present
+  become: yes
+
 - name: Install systemd-timesyncd
   package:
     name: systemd-timesyncd
